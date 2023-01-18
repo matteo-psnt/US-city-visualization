@@ -5,6 +5,7 @@ from geopy.geocoders import Nominatim
 from alive_progress import alive_bar
 
 # city_pop = open('city_pop.txt', 'w')
+# city_pop.write('rank,city,state,population,growth,latitude,longitude\n')
 geolocator = Nominatim(user_agent="user")
 for page in range(195):
     a = requests.get("https://www.biggestuscities.com/" + str(page + 1))
