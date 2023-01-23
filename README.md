@@ -1,12 +1,12 @@
-# Us-Cities-Population-and-Geographic-coordinates-2019-Data
-US Cities By population, growth, and Geographic coordinates - 2019 data
+# Us-Cities-Population-and-Geographic-coordinates-2022-Data
+US Cities By population, growth, and Geographic coordinates - 2022 data
 
 **Rows seperated by:**            
 US Population Rank,               
 City,                           
 State,              
-2019 Population,  
-2000 - 2019 Population Growth,  
+2022 Population,  
+2000 - 2022 Population Growth,  
 Longitude,  
 Latitude  
 
