@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 ssl._create_default_https_context = ssl._create_unverified_context
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-year", help="year you want shown Options: [2022, 2019]", default=2020)
+parser.add_argument("-year", help="year you want shown Options: [2022, 2019]", default=2022)
 args = parser.parse_args()
 YEAR = args.year
 

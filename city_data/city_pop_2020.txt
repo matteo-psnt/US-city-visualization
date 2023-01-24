@@ -1,4 +1,4 @@
-rank,city,state,population,growth,latitude,longitude
+rank,city,state,population,latitude,longitude
 1,New York,NY,8772978,40.7127281,-74.0060152
 2,Los Angeles,CA,3889834,34.0536909,-118.242766
 3,Chicago,IL,2741730,41.8755616,-87.6244212

@@ -12,7 +12,7 @@ YEAR = args.year
 
 
 city_pop = open('city_data/city_pop_' + str(YEAR) + '.txt', 'w')
-city_pop.write('rank,city,state,population,growth,latitude,longitude\n')
+city_pop.write('rank,city,state,population,latitude,longitude\n')
 geolocator = Nominatim(user_agent="user")
 
 
