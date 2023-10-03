@@ -10,6 +10,13 @@ parser.add_argument("-year", help="year you want shown Options: [2022, 2019]", d
 args = parser.parse_args()
 YEAR = args.year
 
+# check if file exists for year
+try:
+    open(f'city_data/city_pop_{YEAR}.csv')
+except FileNotFoundError:
+    print('File not found. Please run scraper.py first')
+    exit()
+
 # Import City Population data
 df = pd.read_csv(f'city_data/city_pop_{YEAR}.csv')
 df['text'] = df['city'] + ', ' + df['state'] + '<br>Population ' + (df['population'] / 1e6).astype(str) + ' million'
