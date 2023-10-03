@@ -12,19 +12,26 @@ YEAR = args.year
 
 # Import City Population data
 df = pd.read_csv('city_data/city_pop_' + str(YEAR) + '.txt')
-df.head()
-
 df['text'] = df['city'] + ', ' + df['state'] + '<br>Population ' + (df['population'] / 1e6).astype(str) + ' million'
-limits = [(0, 5), (6, 10), (11, 20), (21, 100), (101, 1000)]
-colors = ["royalblue", "crimson", "lightseagreen", "orange", "lightgrey"]
-cities = []
+
+# Update limits to reflect population values and give numeric names
+population_brackets = {
+    '5M+': (5000001, 1000000000),
+    '1M+': (1000001, 5000000),
+    '500K-1M': (500001, 1000000),
+    '100K-500K': (100001, 500000),
+    '50K-100K': (50001, 100000),
+    '0-50K': (0, 50000)
+}
+
+# Original colors reversed
+colors = ["white", "royalblue", "crimson", "lightseagreen", "orange", "lightgrey"]
 scale = 5000
 
 fig = go.Figure()
 
-for i in range(len(limits)):
-    lim = limits[i]
-    df_sub = df[lim[0]:lim[1]]
+for bracket_name, lim in population_brackets.items():
+    df_sub = df[(df['population'] >= lim[0]) & (df['population'] <= lim[1])]
     fig.add_trace(go.Scattergeo(
         locationmode='USA-states',
         lon=df_sub['longitude'],
@@ -32,12 +39,12 @@ for i in range(len(limits)):
         text=df_sub['text'],
         marker=dict(
             size=df_sub['population'] / scale,
-            color=colors[i],
+            color=colors[list(population_brackets.keys()).index(bracket_name)],
             line_color='rgb(40,40,40)',
             line_width=0.5,
             sizemode='area'
         ),
-        name='{0} - {1}'.format(lim[0], lim[1])))
+        name=bracket_name))
 
 fig.update_layout(
     title_text=str(YEAR) + ' US city populations<br>(Click legend to toggle traces)',
