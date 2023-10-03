@@ -10,12 +10,12 @@ parser.add_argument("-year", help="year's data do you want to find", default=202
 args = parser.parse_args()
 YEAR = args.year
 
-city_pop = open('city_data/city_pop_' + str(YEAR) + '.txt', 'w')
+city_pop = open('city_data/city_pop_' + str(YEAR) + '.csv', 'w')
 city_pop.write('rank,city,state,population,latitude,longitude\n')
 geolocator = Nominatim(user_agent="user")
 
 def find_city_location(city, state):
-    with open('city_data/city_location_data.txt') as csvfile:
+    with open('city_data/city_location_data.csv') as csvfile:
         dictionary = DictReader(csvfile)
 
         for row in dictionary:
