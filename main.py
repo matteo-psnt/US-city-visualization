@@ -11,7 +11,7 @@ args = parser.parse_args()
 YEAR = args.year
 
 # Import City Population data
-df = pd.read_csv('city_data/city_pop_' + str(YEAR) + '.txt')
+df = pd.read_csv(f'city_data/city_pop_{YEAR}.csv')
 df['text'] = df['city'] + ', ' + df['state'] + '<br>Population ' + (df['population'] / 1e6).astype(str) + ' million'
 
 # Update limits to reflect population values and give numeric names
