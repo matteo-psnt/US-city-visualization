@@ -13,21 +13,28 @@ pip install -r requirements.txt
 ```
 
 ## Usage
+To view the visualization for a specific year, use the -year flag with main.py. The default year is 2022.'
 ```bash
-python3 main.py -year [year] default=2022
+python3 main.py -year [year] # default=2022
 ```
 
+To scrape data and generate a new CSV file, run scraper.py. The default year for scraping is 2022. Use the -cached flag to utilize the cached CSV file for location lookups.
+```bash
+python3 scraper.py -cached -year [year] # default=2022
+```
 
-**Rows seperated by:**            
-US Population Rank,               
-City,                           
-State,              
-Population,
-Longitude,  
-Latitude  
+## Data Structure
+ **Rows seperated by:**     
+
+- US Population Rank,               
+- City,                           
+- State,              
+- Population,
+- Longitude,  
+- Latitude  
 
 
-**Sources:**       
+## **Sources**       
 Top 100 Biggest US Cities By Population       
 https://www.biggestuscities.com/
 
