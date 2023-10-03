@@ -1,5 +1,22 @@
-# Us-Cities-Population-and-Geographic-coordinates-2022-Data
-US Cities By population and Geographic coordinates - 2022 data
+# US City Populations Visualization
+
+Visualize US city populations on a map. Cities are represented by circles sized and colored by population.
+
+![2022 Visualization](docs/2022_map.png)
+
+
+## Setup
+```bash
+git clone https://github.com/matteo-psnt/US-city-visualization.git
+cd US-city-visualization
+pip install -r requirements.txt
+```
+
+## Usage
+```bash
+python3 main.py -year [year] default=2022
+```
+
 
 **Rows seperated by:**            
 US Population Rank,               
