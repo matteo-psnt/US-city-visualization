@@ -9,6 +9,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-year", help="year's data do you want to find", default=2022)
 args = parser.parse_args()
 YEAR = args.year
+if YEAR > 2022:
+    print('Year must be 2022 or earlier')
+    exit()
+elif YEAR < 1840:
+    print('Year must be 1840 or later')
+    exit()
 
 city_pop = open('city_data/city_pop_' + str(YEAR) + '.csv', 'w')
 city_pop.write('rank,city,state,population,latitude,longitude\n')
@@ -28,9 +34,10 @@ def find_city_location(city, state):
 PAGE_COUNT = 195
 for page_index in range(PAGE_COUNT):
     if YEAR != 2022:
-        webData = requests.get('https://www.biggestuscities.com/' + str(YEAR) + '/' + str(page_index + 1))
+        webData = requests.get(f'https://www.biggestuscities.com/{YEAR}/{page_index + 1}')
     else:
-        webData = requests.get('https://www.biggestuscities.com/' + str(page_index + 1))
+        webData = requests.get(f'https://www.biggestuscities.com/{page_index + 1}')
+        print(webData)
 
     soup = BeautifulSoup(webData.text, 'lxml')
     tables = soup.findAll('table', 'table-condensed')

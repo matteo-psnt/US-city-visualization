@@ -9,16 +9,21 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-year", help="year's data do you want to find", default=2022)
 args = parser.parse_args()
 YEAR = args.year
+if YEAR > 2022:
+    print('Year must be 2022 or earlier')
+    exit()
+elif YEAR < 1840:
+    print('Year must be 1840 or later')
+    exit()
 
-
-city_pop = open('city_data/city_pop_' + str(YEAR) + '.txt', 'w')
+city_pop = open(f'city_data/city_pop_{YEAR}.txt', 'w')
 city_pop.write('rank,city,state,population,latitude,longitude\n')
 geolocator = Nominatim(user_agent="user")
 
 
 PAGE_COUNT = 195
 for page_index in range(PAGE_COUNT):
-    webData = requests.get('https://www.biggestuscities.com/' + str(YEAR) + '/' + str(page_index + 1))
+    webData = requests.get(f'https://www.biggestuscities.com/{YEAR}/{page_index + 1}')
     soup = BeautifulSoup(webData.text, 'lxml')
     tables = soup.findAll('table', 'table-condensed')
     with alive_bar(100, title='Reading Page ' + str(page_index + 1), force_tty=True) as bar:
