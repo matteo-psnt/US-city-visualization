@@ -40,5 +40,3 @@ https://www.biggestuscities.com/
 
 GeoPy       
 https://github.com/geopy/geopy
-
-Run main.py to view a visualization of the data on a map of the US.
